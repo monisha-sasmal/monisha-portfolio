@@ -1,7 +1,7 @@
 // Typed Animation
 var typed = new Typed('#element', {
   strings: ["Web Developer", "Frontend Developer", "Node.js Developer"],
-  typeSpeed: 80,
+  typeSpeed: 79,
   backSpeed: 40,
   loop: true
 });
