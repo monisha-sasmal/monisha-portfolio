@@ -1,35 +1,26 @@
-// Typed.js effect
+// Typed Animation
 var typed = new Typed('#element', {
-  strings: [
-    'I am a passionate B.Tech Computer Science student and aspiring web developer.',
-  ],
-  typeSpeed: 50,
-  backSpeed: 25,
+  strings: ["Web Developer", "Frontend Developer", "Node.js Developer"],
+  typeSpeed: 80,
+  backSpeed: 40,
   loop: true
 });
 
-// Section Toggle Script
-const navLinks = document.querySelectorAll('.navbar a');
-const sections = document.querySelectorAll('section');
+// Add active class on scroll
+let sections = document.querySelectorAll("section");
+let navLinks = document.querySelectorAll(".navbar a");
 
-// Show Home by default
-document.getElementById('home').classList.add('active');
+window.addEventListener("scroll", () => {
+  let scrollPos = window.scrollY + 150;
 
-navLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const targetId = link.getAttribute('href').substring(1);
-
-    // Hide all sections
-    sections.forEach(sec => sec.classList.remove('active', 'fade-in'));
-
-    // Show clicked section
-    const targetSection = document.getElementById(targetId);
-    targetSection.classList.add('active', 'fade-in');
-
-    // Update navbar active state
-    navLinks.forEach(nav => nav.classList.remove('active'));
-    link.classList.add('active');
+  sections.forEach(sec => {
+    if(scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight){
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if(link.getAttribute("href").slice(1) === sec.getAttribute("id")){
+          link.classList.add("active");
+        }
+      });
+    }
   });
 });
-
